@@ -16,7 +16,6 @@ public class ImplementArray {
     public int getLength() {
         return length;
     }
-
     public void assign(int index, Object element) {
         if (index < length)
             data[index] = element;
@@ -27,19 +26,20 @@ public class ImplementArray {
             return data[index];
         return null;
     }
-
     public void push(Object element) {
         // on top
         insert(0, element);
     }
+
 
     public Object pop() {
         Object tempObj = data[length - 1];
         delete(length - 1);
         return tempObj;
     }
-
     public void insert(int index, Object element) {
+        // on top
+
         moveDown(index, 1);
         data[index] = element;
     }
