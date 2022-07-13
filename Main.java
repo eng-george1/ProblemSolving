@@ -1,7 +1,9 @@
 import java.io.Console;
 
 public class Main {
+ 
   public static void main(String[] args) {
+    System.out.println( Math.pow(6,1000));
     // final String[] nemo = { "nemo" };
     // findNemo(nemo);
 
