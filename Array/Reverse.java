@@ -12,4 +12,9 @@ public class Reverse {
         }
         return new String( array);
     }
+        public static String reverse2(String s) {
+            if(s==null||s.isEmpty())
+            return "";
+          return new StringBuilder(s).reverse().toString();
+        }
 }
