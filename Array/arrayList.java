@@ -16,6 +16,10 @@ public class arrayList {
    array.delete(5);
    array.Shrink();
   System.out.println(array.toString());
+
+  System.out.println(Reverse.reverse("s"));
+  System.out.println(Reverse.reverse(null));
+System.out.println(Reverse.reverse("Hello world"));
     }
     
 }
