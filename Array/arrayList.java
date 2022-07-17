@@ -1,5 +1,7 @@
 package Array;
 
+import java.util.Arrays;
+
 public class arrayList {
   public static void main(String[] args) {
     ImplementArray array = new ImplementArray(5);
@@ -23,6 +25,10 @@ public class arrayList {
     System.out.println(Reverse.reverse(null));
     System.out.println(Reverse.reverse("Hello world"));
     System.out.println(Reverse.reverse2("Hello world"));
+
+    // Merge array
+    System.out.println(Arrays.toString(MergeArraies.merge(new int[] { 1, 2, 5 }, new int[] { 0,3, 4, 6 })));
+    System.out.println(Arrays.toString(MergeArraies.merge(new int[] { 1, 2, 5 }, new int[] {  })));
   }
 
 }
