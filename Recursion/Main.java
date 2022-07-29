@@ -2,10 +2,11 @@ package Recursion;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(fibonacci(800));
-        System.out.println(fibonacci2(800));
+        System.out.println(fibonacci(8));
+        System.out.println(fibonacci2(8));
     }
 
+    // O(2^n)
     public static int fibonacci(int n) {
         if (n == 0)
             return 0;
@@ -14,6 +15,7 @@ public class Main {
         return fibonacci(n - 1) + fibonacci(n - 2);
     }
 
+    // O(n)
     public static int fibonacci2(int n) {
         if (n == 0)
             return 0;
