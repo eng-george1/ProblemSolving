@@ -11,21 +11,30 @@ public class Main {
         // array.sort(null);
         // System.out.println(array);
         System.out.println("Start");
-        int[] array = { 3, 4, 1, 8, 5, 7, 2, 6, 0, -1, 100, 2, 5, 8, 9, 00, 22, 45 };
+        int[] array = {-2, 3, 4, 1, 8, 5, 7, 2, 6, 0, -1, 100, 2, 5, 8, 9, 00, 22, 45 };
         selectionSort(array);
         System.out.println("Selection: " + Arrays.toString(array));
         int[] array1 = { -2, 3, 4, 1, 8, 5, 7, 2, 6, 0, -1, 100, 2, 5, 8, 9, 00, 22, 45 };
         bubbleSort(array1);
-        System.out.println("Bubble: " + Arrays.toString(array1));
+        System.out.println("Bubble:    " + Arrays.toString(array1));
 
         int[] array3 = { -2, 3, 4, 1, 8, 5, 7, 2, 6, 0, -1, 100, 2, 5, 8, 9, 00, 22, 45 };
         insertionSort(array3);
         System.out.println("Insertion: " + Arrays.toString(array3));
+
+        int[] array4 = { -2, 3, 4, 1, 8, 5, 7, 2, 6, 0, -1, 100, 2, 5, 8, 9, 00, 22, 45 };
+        array4 = MergeSort.mergeSort(array4);
+        System.out.println("Merge:     " + Arrays.toString(array4));
+
+        int[] array5 = { -2, 3, 4, 1, 8, 5, 7, 2, 6, 0, -1, 100, 2, 5, 8, 9, 00, 22, 45 };
+        array4 = QuickSort.quickSort(array5);
+        System.out.println("Quick:     " + Arrays.toString(array4));
         selectionSort(new int[] { 1 });
         selectionSort(new int[] {});
         // System.out.println(Arrays.toString( ));
     }
 
+    // O(n^2)
     public static void bubbleSort(int[] array) {
 
         for (int i = 0; i < array.length - 1; i++) {
@@ -66,6 +75,7 @@ public class Main {
 
     }
 
+    // O(n^2)
     public static void insertionSort(int[] array) {
 
         for (int i = 0; i < array.length - 1; i++) {
@@ -75,9 +85,12 @@ public class Main {
                     array[j - 1] = array[j];
                     array[j] = tepSwap;
                 } else
+                    // if one item passed without  swap so its already sorted and take the next
+                    // best case O(n)
                     break;
             }
         }
 
     }
+
 }
