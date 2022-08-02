@@ -59,6 +59,7 @@ public class Node {
         this.rightChild = rightChild;
     }
 
+    // Depth first search
     private String toStringNode(Node node) {
         StringBuilder strB = new StringBuilder();
         if (node == null)
@@ -72,6 +73,7 @@ public class Node {
         return strB.toString();
     }
 
+    // Breadth first Search
     private String toStringOrderNode(Queue<Node> q) {
         StringBuilder strB = new StringBuilder();
         if (q.isEmpty())
@@ -146,8 +148,8 @@ public class Node {
             if (currentNode.value == e) {
                 // no child
                 if (currentNode.leftChild == null && currentNode.rightChild == null) {
-                    if (previousNode==null){
-                    tree=null;
+                    if (previousNode == null) {
+                        tree = null;
                         return;
                     }
                     if (currentIsLeft)
@@ -155,40 +157,42 @@ public class Node {
                     else
                         previousNode.rightChild = null;
                     return;
-                } if (currentNode.rightChild != null && (currentNode.leftChild == null||currentNode.rightChild.leftChild==null)) {
-                    if(previousNode==null){
-                        currentNode.value=currentNode.rightChild.value;
-                        currentNode.rightChild=currentNode.rightChild.rightChild;
+                }
+                if (currentNode.rightChild != null
+                        && (currentNode.leftChild == null || currentNode.rightChild.leftChild == null)) {
+                    if (previousNode == null) {
+                        currentNode.value = currentNode.rightChild.value;
+                        currentNode.rightChild = currentNode.rightChild.rightChild;
                         break;
-                       }
+                    }
                     if (currentIsLeft)
                         previousNode.leftChild = currentNode.rightChild;
                     else
                         previousNode.rightChild = currentNode.rightChild;
                     return;
-                }
-                 else if (currentNode.leftChild != null && (currentNode.rightChild == null||currentNode.leftChild.rightChild==null)) {
-                   if(previousNode==null){
-                    currentNode.value=currentNode.leftChild.value;
-                    currentNode.leftChild=currentNode.leftChild.leftChild;
-                    break;
-                   }
+                } else if (currentNode.leftChild != null
+                        && (currentNode.rightChild == null || currentNode.leftChild.rightChild == null)) {
+                    if (previousNode == null) {
+                        currentNode.value = currentNode.leftChild.value;
+                        currentNode.leftChild = currentNode.leftChild.leftChild;
+                        break;
+                    }
                     if (currentIsLeft)
                         previousNode.leftChild = currentNode.leftChild;
                     else
                         previousNode.rightChild = currentNode.leftChild;
                     return;
-                } 
+                }
                 // two child
                 else if (currentNode.leftChild != null && currentNode.rightChild != null) {
                     // min in right
                     Node minNode = currentNode.rightChild;
                     Node previouseMinNode = currentNode;
-                   
+
                     while (true) {
                         if (minNode.leftChild == null) {
                             currentNode.setValue(minNode.getValue());
-                            previouseMinNode.leftChild=minNode.rightChild;
+                            previouseMinNode.leftChild = minNode.rightChild;
                             return;
                         }
                         previouseMinNode = minNode;
