@@ -31,5 +31,6 @@ public class QuickSort {
         }
         result[leftIndex] = pivote;
         return result;
-    }
+    }    
+    
 }

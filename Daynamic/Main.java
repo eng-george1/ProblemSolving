@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) {
         int[] arr = new int[] { 2, 4, 8, 9, 9, 3 };
         System.out.println(rob(arr));
+        System.out.println(rob(new int[]{2,3,2,100}));
         System.out.println(maxProfit(new int[] { 4, 7, 2, 1 }));
     }
 
