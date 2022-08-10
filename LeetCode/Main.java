@@ -11,6 +11,10 @@ import java.util.Stack;
 
 import Array.arrayList;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println(kthSmallest1(new int[][] { { 1, 5, 9 }, { 10, 11, 13 }, { 12, 13, 15 } }, 8));
@@ -20,7 +24,6 @@ public class Main {
         System.out.println(Arrays.toString(twoSum2(new int[] { 3, 2, 4 }, 6)));
         System.out.println(romanToInt("MCMXCIV"));
 
-    
         print2D(merge(new int[][] { { 1, 3 }, { 2, 6 }, { 8, 10 }, { 15, 18 } }));
         print2D(merge(new int[][] { { 2, 3 }, { 4, 5 }, { 6, 7 }, { 8, 9 }, { 1, 10 } }));
         System.out.println("Merge after Sort");
@@ -47,7 +50,10 @@ public class Main {
             System.out.println(Arrays.toString(row));
     }
 
-   
+    public static int kthSmallest(int[][] matrix, int k) {
+        // find dublicated
+        return matrix[(k - 1) / matrix.length][((k - 1) % matrix.length)];
+    }
 
     public static int kthSmallest1(int[][] matrix, int k) {
         // merge
@@ -62,7 +68,21 @@ public class Main {
         return array[k - 1];
     }
 
-   public static int kthSmallest2(int[][] matrix, int k) {
+    public static int kthSmallest3(int[][] matrix, int k) {
+        // get the dublicated count
+        int dublicated = 0;
+        int[] array = new int[matrix.length * matrix.length];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                array[i * matrix.length + j] = matrix[i][j];
+            }
+        }
+        Sorting.Main.insertionSort(array);
+        System.out.println(Arrays.toString(array));
+        return array[k - 1];
+    }
+
+    public static int kthSmallest2(int[][] matrix, int k) {
         int rows = matrix.length;
         int cols = matrix[0].length;
 
@@ -127,8 +147,6 @@ public class Main {
         }
         return value;
     }
-
-   
 
     public static int[][] merge(int[][] intervals) {
         int[][] result = new int[intervals.length][intervals[0].length];
@@ -286,9 +304,9 @@ public class Main {
         }
         right[right.length - 1] = height[right.length - 1];
         for (int i = right.length - 2; i >= 0; i--) {
-            right[i] = Math.max(right[i+1], height[i]);
+            right[i] = Math.max(right[i + 1], height[i]);
         }
-        for (int i = 0; i < height.length ; i++) {
+        for (int i = 0; i < height.length; i++) {
 
             count += Math.min(right[i], left[i]) - height[i];
         }

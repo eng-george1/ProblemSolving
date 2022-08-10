@@ -14,8 +14,9 @@ public class MyKthsol {
                 { 10, 13, 14, 17, 24 }, { 18, 21, 23, 26, 30 } }, 5));
 
     }
+  
+//https://drive.google.com/file/d/144nrGMJSbKQ3WJcizfwa4nDkfxoBiWgO/view?usp=sharing
 
-    // https://drive.google.com/file/d/144nrGMJSbKQ3WJcizfwa4nDkfxoBiWgO/view?usp=sharing
     public static int kthSmallest(int[][] matrix, int k) {
         int newsize = Math.min(matrix.length, k);
         PriorityQueue<Integer> minHeap = new PriorityQueue<>();
