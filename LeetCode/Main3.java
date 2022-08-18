@@ -18,6 +18,11 @@ public class Main3 {
         System.out.println(longestPalindrome("aacabdkacaa"));
         System.out.println(Arrays.toString(subdomainVisits(
                 new String[] { "900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org" }).toArray()));
+        System.out.println(validPalindrome2("abca"));
+        System.out.println(validPalindrome2("abc"));
+        System.out.println(validPalindrome2("eeccccbebaeeabebccceea"));
+        System.out.println(validPalindrome2(
+                "aguokepatgbnvfqmgmlcupuufxoohdfpgjdmysgvhmvffcnqxjjxqncffvmhvgsymdjgpfdhooxfuupuculmgmqfvnbgtapekouga"));
     }
 
     public static int lengthOfLongestSubstring(String s) {
@@ -109,4 +114,50 @@ public class Main3 {
         return result1;
 
     }
+
+    private static boolean checkPalindrome(String s, int i, int j) {
+        while (i < j) {
+            if (s.charAt(i) != s.charAt(j)) {
+                return false;
+            }
+
+            i++;
+            j--;
+        }
+
+        return true;
+    }
+
+    public static boolean validPalindrome(String s) {
+        int i = 0;
+        int j = s.length() - 1;
+
+        while (i < j) {
+            // Found a mismatched pair - try both deletions
+            if (s.charAt(i) != s.charAt(j)) {
+                return (checkPalindrome(s, i, j - 1) || checkPalindrome(s, i + 1, j));
+            }
+
+            i++;
+            j--;
+        }
+
+        return true;
+    }
+
+    public static String longestCommonPrefix(String[] strs) {
+        if (strs.length == 0)
+            return "";
+        String prefix = strs[0];
+        for (int i = 1; i < strs.length; i++) {
+            while (strs[i].indexOf(prefix) != 0) {
+                prefix = prefix.substring(0, prefix.length() - 1);
+                if (prefix == "")
+                    return "";
+            }
+
+        }
+        return prefix;
+    }
+
 }
