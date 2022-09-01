@@ -17,6 +17,9 @@ import java.util.PriorityQueue;
 
 public class Main {
     public static void main(String[] args) {
+        for (int i = 0,j = 0; i < 10; i++,j--) {
+            System.out.println("j"+j);
+            }
         System.out.println(kthSmallest1(new int[][] { { 1, 5, 9 }, { 10, 11, 13 }, { 12, 13, 15 } }, 8));
         System.out.println(kthSmallest1(new int[][] { { -5 } }, 1));
         System.out.println(kthSmallest1(new int[][] { { 1, 2, 3 }, { 4, 7, 8 }, { 9, 10, 11 } }, 7));
