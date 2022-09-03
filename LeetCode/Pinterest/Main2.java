@@ -17,11 +17,16 @@ public class Main2 {
         System.out.println(findMin(new int[] { 4, 5, 6, 7, -1, 0, 1, 2 }));
         System.out.println(findMin(new int[] { 11, 13, 15, 17 }));
         System.out.println(findMin(new int[] { 5, 1, 2, 3, 4 }));
-        System.out.println(maxProfit(new int[] { 7, 1, 5, 3, 6, 4 })); 
-         System.out.println(maxProfit3(new int[] {7,1,5,3,6,4 }));  
-             System.out.println(maxProfit3(new int[] {1,2,3,4,5 }));
-             System.out.println(maxProfit3(new int[] {1,2,3,4,5 }));
+        System.out.println(maxProfit(new int[] { 7, 1, 5, 3, 6, 4 }));
+        System.out.println(maxProfit3(new int[] { 7, 1, 5, 3, 6, 4 }));
+        System.out.println(maxProfit3(new int[] { 1, 2, 3, 4, 5 }));
+        System.out.println(maxProfit3(new int[] { 1, 2, 3, 4, 5 }));
 
+        System.out.println(removeDuplicates(new int[] { 0, 0, 1, 1, 1, 1, 2, 3, 3 }));
+        int[] i1 = new int[] { 1, 2, 3, 0, 0, 0 };
+        int[] i2 = new int[] { 2, 3, 5 };
+        merge(i1, 3, i2, 3);
+        System.out.println(Arrays.toString(i1));
     }
 
     public static int longestValidParentheses(String s) {
@@ -219,5 +224,61 @@ public class Main2 {
                 maxprofit += prices[i] - prices[i - 1];
         }
         return maxprofit;
+    }
+
+    public static int removeDuplicates(int[] nums) {
+        int k = 1;
+        int count = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == nums[i - 1] && count == 2) {
+
+            } else {
+                if (nums[i] == nums[i - 1])
+                    count++;
+                else
+                    count = 1;
+                nums[k] = nums[i];
+                k++;
+            }
+        }
+        return k;
+    }
+
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+        for (int i = nums1.length - 1; i >= 0; i--) {
+            if (m > 0 && n > 0) {
+                if (nums1[m - 1] > nums2[n - 1]) {
+                    nums1[i] = nums1[m - 1];
+                    m--;
+                } else {
+                    nums1[i] = nums2[n - 1];
+                    n--;
+                }
+            } else if (m <= 0) {
+                nums1[i] = nums2[n - 1];
+                n--;
+            } else {
+                nums1[i] = nums1[m - 1];
+                m--;
+            }
+
+        }
+    }
+
+    public static void rotate(int[] nums, int k) {
+        k = k % nums.length;
+        reverse(nums, 0, nums.length - 1);
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, nums.length - 1);
+    }
+
+    private static void reverse(int[] nums, int start, int end) {
+        while (start < end) {
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end]=temp;
+            end--;
+            start++;
+        }
     }
 }
